@@ -165,7 +165,6 @@
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
         }
 
-        /* Nút Copy IP */
         .ip-box {
             background: rgba(0, 0, 0, 0.65);
             padding: 15px 30px;
@@ -321,7 +320,6 @@
             padding: 15px 20px 20px 20px;
         }
 
-        /* Community Section */
         .community {
             background: #14151c;
             border-radius: 20px;
@@ -349,7 +347,6 @@
             transform: translateY(-3px);
         }
 
-        /* MODAL ĐĂNG NHẬP / ĐĂNG KÝ */
         .modal {
             display: none;
             position: fixed;
@@ -511,7 +508,7 @@
             <div class="card">
                 <span class="icon">🛡️</span>
                 <h3>Anti-cheat</h3>
-                <p>Chống Movement lạ, bay x-ray và các hành vi gian lận khác.</p>
+                <p>Chống Movement lạ, bay x-ray và các hành vi gian lận khác.(Plugin: AntiXray-3.0 và grimac bukkit)</p>
             </div>
             <div class="card">
                 <span class="icon">💎</span>
@@ -526,7 +523,7 @@
             <div class="card">
                 <span class="icon">📜</span>
                 <h3>Nhiệm Vụ & Sự Kiện</h3>
-                <p>Sự Kiện định kì, có đồ ngon làm Nhiệm vụ!</p>
+                <p>Sự Kiện định kì, có đồ ngon làm Nhiệm vụ! (sắp tới). Có H OBlock!</p>
             </div>
             <div class="card">
                 <span class="icon">👑</span>
@@ -560,12 +557,23 @@
                     <p>Có! Server hỗ trợ cả người chơi Java (PC) và Bedrock (Android/iOS).</p>
                 </div>
             </div>
+        <div class="faq-container">
+            <div class="faq-item">
+                <button class="faq-question">
+                    3. Ping ổn Không?
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>Server hỗ trợ Server Vietnam Only và có quốc tế nhưng đang phát triền. Ping có thể cực thấp gần như = 0ms</b>.</p>
+                </div>
+            </div>
         </div>
     </section>
 
 
     <footer>
         &copy; 2026 H SMP Server. All rights reserved.
+        &copy; Hung1502thanh!
     </footer>
 
     <script>
@@ -573,7 +581,7 @@
         function copyIP() {
             const ip = document.getElementById("serverIP").innerText;
             navigator.clipboard.writeText(ip);
-            alert("Đã copy IP server: " + ip + "\nMở Minecraft lên chiến ngay thôi mày!");
+            alert("Đã copy IP server: " + ip + "\n");
         }
 
         // Accordion FAQ
