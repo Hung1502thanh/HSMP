@@ -1,0 +1,14 @@
+{
+  "name": "hsmp",
+  "version": "1.0.0",
+  "private": true,
+  "description": "H SMP landing page served by Node.js 24",
+  "type": "module",
+  "engines": {
+    "node": ">=24.0.0 <25.0.0"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  }
+}
