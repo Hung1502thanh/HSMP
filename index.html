@@ -22,6 +22,12 @@
         .ip-box:hover { background: rgba(85,255,85,.25); border-color: #55ff55; transform: scale(1.05); box-shadow: 0 0 25px rgba(85,255,85,.5); }
         .ip-text { font-size: 1.3rem; font-weight: bold; letter-spacing: 1px; }
         .btn-copy { background: #55ff55; color: #000; padding: 8px 18px; border-radius: 20px; font-weight: bold; font-size: .9rem; }
+        .server-status { display: inline-flex; align-items: center; gap: 7px; font-size: .9rem; font-weight: bold; white-space: nowrap; }
+        .server-status::before { content: ''; width: 10px; height: 10px; border-radius: 50%; background: #aaa; }
+        .server-status.online { color: #55ff55; }
+        .server-status.online::before { background: #55ff55; box-shadow: 0 0 10px #55ff55; }
+        .server-status.offline { color: #ff5555; }
+        .server-status.offline::before { background: #ff5555; box-shadow: 0 0 10px #ff5555; }
         section { padding: 70px 20px; max-width: 1000px; margin: 0 auto; }
         section h2 { font-size: 2.3rem; margin-bottom: 15px; display: inline-block; }
         section h2::after { content: ''; display: block; width: 60%; height: 4px; margin: 10px auto 0; border-radius: 2px; background: #55ff55; }
@@ -58,6 +64,7 @@
             <p class="hero-desc">Bạn chưa có server SMP nào để chơi? Hãy vào <b>H SMP</b> ngay hôm nay để trải nghiệm thế giới sinh tồn cày cuốc cực cuốn, cộng đồng thân thiện và nhiều tính năng hấp dẫn.</p>
             <div class="ip-box" role="button" tabindex="0" aria-label="Sao chép địa chỉ server" onclick="copyIP()" onkeydown="if (event.key === 'Enter' || event.key === ' ') copyIP()">
                 <span class="ip-text" id="serverIP">hsmp.abrdns.com</span>
+                <span class="server-status" id="serverStatus" aria-live="polite">ĐANG KIỂM TRA...</span>
                 <span class="btn-copy">SAO CHÉP IP</span>
             </div>
         </div>
@@ -93,6 +100,41 @@
     <footer>&copy; 2026 H SMP Server. All rights reserved. &copy; Hung1502thanh!</footer>
 
     <script>
+        const SERVER_HOST = 'hsmp.abrdns.com';
+        const SERVER_STATUS_API = 'https://api.mcsrvstat.us/3/';
+        const statusElement = document.getElementById('serverStatus');
+
+        async function getCurrentIPv6() {
+            const response = await fetch('https://api6.ipify.org?format=json', { cache: 'no-store' });
+            if (!response.ok) throw new Error('Không lấy được IPv6 hiện tại');
+            const data = await response.json();
+            if (!data.ip || !data.ip.includes(':')) throw new Error('Địa chỉ hiện tại không phải IPv6');
+            return data.ip;
+        }
+
+        async function checkServerStatus() {
+            statusElement.textContent = 'ĐANG KIỂM TRA...';
+            statusElement.className = 'server-status';
+            try {
+                // Lấy IPv6 công khai hiện tại của mạng rồi Minecraft-ping qua API.
+                const currentIPv6 = await getCurrentIPv6();
+                const response = await fetch(
+                    `${SERVER_STATUS_API}${encodeURIComponent(`[${currentIPv6}]`)}`,
+                    { cache: 'no-store' }
+                );
+                if (!response.ok) throw new Error(`Status API returned ${response.status}`);
+
+                const server = await response.json();
+                const online = server.online === true;
+                statusElement.textContent = online ? 'ONLINE (IPv6)' : 'OFFLINE';
+                statusElement.className = `server-status ${online ? 'online' : 'offline'}`;
+            } catch (error) {
+                console.error('Minecraft IPv6 status check failed:', error);
+                statusElement.textContent = 'OFFLINE';
+                statusElement.className = 'server-status offline';
+            }
+        }
+
         async function copyIP() {
             const ip = document.getElementById('serverIP').textContent.trim();
             try {
@@ -115,6 +157,9 @@
         document.querySelectorAll('.faq-question').forEach((question) => {
             question.addEventListener('click', () => question.parentElement.classList.toggle('active'));
         });
+
+        checkServerStatus();
+        setInterval(checkServerStatus, 30000);
     </script>
 </body>
 </html>
