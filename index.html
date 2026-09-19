@@ -6,606 +6,129 @@
     <title>ʜ sᴍᴘ</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background-color: #0f1015;
-            color: #fff;
-            text-align: center;
-            line-height: 1.6;
-        }
-
-        .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 50px;
-            background: rgba(15, 16, 21, 0.85);
-            backdrop-filter: blur(12px);
-            z-index: 1000;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .nav-logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #55ff55;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .search-box {
-            position: relative;
-            display: flex;
-            align-items: center;
-        }
-
-        .search-box input {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 8px 15px 8px 35px;
-            border-radius: 20px;
-            color: #fff;
-            outline: none;
-            transition: 0.3s;
-            width: 150px;
-        }
-
-        .search-box input:focus {
-            width: 200px;
-            border-color: #55ff55;
-            background: rgba(0, 0, 0, 0.5);
-        }
-
-        .search-box i {
-            position: absolute;
-            left: 12px;
-            color: #aaa;
-            font-size: 0.9rem;
-        }
-
-        .nav-item {
-            color: #fff;
-            text-decoration: none;
-            font-weight: 600;
-            padding: 8px 16px;
-            border-radius: 20px;
-            transition: 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.95rem;
-            cursor: pointer;
-        }
-
-        .nav-item:hover {
-            color: #55ff55;
-            background: rgba(255, 255, 255, 0.05);
-        }
-
-        .btn-login {
-            border: 1px solid #55ff55;
-            color: #55ff55;
-        }
-
-        .btn-login:hover {
-            background: #55ff55;
-            color: #000;
-        }
-
-        .btn-logout {
-            background: rgba(255, 77, 77, 0.2);
-            border: 1px solid #ff4d4d;
-            color: #ff4d4d;
-        }
-
-        .btn-logout:hover {
-            background: #ff4d4d;
-            color: #fff;
-        }
-
-        .hero {
-            min-height: 90vh;
-            background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(15, 16, 21, 1)), 
-                        url('image_c9c48a.jpg') center/cover no-repeat;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 120px 20px 40px;
-        }
-
-        .welcome-tag {
-            color: #55ff55;
-            font-weight: bold;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            font-size: 1.1rem;
-            margin-bottom: 10px;
-            text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
-        }
-
-        .hero h1 {
-            font-size: 3.8rem;
-            color: #fff;
-            text-shadow: 0 0 20px rgba(0, 0, 0, 0.9);
-            margin-bottom: 15px;
-        }
-
-        .hero h1 span {
-            color: #55ff55;
-        }
-
-        .hero-desc {
-            font-size: 1.25rem;
-            color: #eee;
-            max-width: 750px;
-            margin-bottom: 35px;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
-        }
-
-        .ip-box {
-            background: rgba(0, 0, 0, 0.65);
-            padding: 15px 30px;
-            border-radius: 50px;
-            backdrop-filter: blur(10px);
-            border: 2px solid rgba(85, 255, 85, 0.6);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .ip-box:hover {
-            background: rgba(85, 255, 85, 0.25);
-            border-color: #55ff55;
-            transform: scale(1.05);
-            box-shadow: 0 0 25px rgba(85, 255, 85, 0.5);
-        }
-
-        .ip-text {
-            font-size: 1.3rem;
-            font-weight: bold;
-            letter-spacing: 1px;
-            color: #fff;
-        }
-
-        .btn-copy {
-            background: #55ff55;
-            color: #000;
-            padding: 8px 18px;
-            border-radius: 20px;
-            font-weight: bold;
-            font-size: 0.9rem;
-        }
-
-        section {
-            padding: 70px 20px;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        section h2 {
-            font-size: 2.3rem;
-            margin-bottom: 15px;
-            color: #fff;
-            position: relative;
-            display: inline-block;
-        }
-
-        section h2::after {
-            content: '';
-            display: block;
-            width: 60%;
-            height: 4px;
-            background: #55ff55;
-            margin: 10px auto 0;
-            border-radius: 2px;
-        }
-
-        .section-subtitle {
-            color: #aaa;
-            margin-bottom: 45px;
-            font-size: 1.1rem;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-        }
-
-        .card {
-            background: #181920;
-            padding: 30px;
-            border-radius: 15px;
-            border: 1px solid #2a2b36;
-            text-align: left;
-            transition: 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-8px);
-            border-color: #55ff55;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
-        }
-
-        .card .icon {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            display: block;
-        }
-
-        .card h3 {
-            color: #55ff55;
-            margin-bottom: 10px;
-            font-size: 1.3rem;
-        }
-
-        .card p {
-            color: #aaa;
-            font-size: 0.95rem;
-        }
-
-        .faq-container {
-            text-align: left;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .faq-item {
-            background: #181920;
-            border-radius: 10px;
-            border: 1px solid #2a2b36;
-            overflow: hidden;
-        }
-
-        .faq-question {
-            width: 100%;
-            background: none;
-            border: none;
-            outline: none;
-            padding: 20px;
-            color: #fff;
-            font-size: 1.1rem;
-            font-weight: bold;
-            text-align: left;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: 0.3s;
-        }
-
-        .faq-question:hover {
-            color: #55ff55;
-        }
-
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease, padding 0.3s ease;
-            background: #13141a;
-            color: #ccc;
-            padding: 0 20px;
-        }
-
-        .faq-item.active .faq-answer {
-            max-height: 200px;
-            padding: 15px 20px 20px 20px;
-        }
-
-        .community {
-            background: #14151c;
-            border-radius: 20px;
-            padding: 50px 20px;
-            margin-bottom: 50px;
-            border: 1px solid #2a2b36;
-        }
-
-        .btn-discord {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 14px 35px;
-            background: #5865F2;
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 30px;
-            font-size: 1.1rem;
-            transition: 0.3s;
-        }
-
-        .btn-discord:hover {
-            background: #4752C4;
-            box-shadow: 0 0 20px rgba(88, 101, 242, 0.6);
-            transform: translateY(-3px);
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(8px);
-            z-index: 2000;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .modal-content {
-            background: #181920;
-            padding: 40px;
-            border-radius: 20px;
-            border: 1px solid #55ff55;
-            width: 90%;
-            max-width: 400px;
-            position: relative;
-            text-align: center;
-            box-shadow: 0 0 30px rgba(85, 255, 85, 0.2);
-        }
-
-        .close-btn {
-            position: absolute;
-            top: 15px;
-            right: 20px;
-            font-size: 1.5rem;
-            color: #aaa;
-            cursor: pointer;
-        }
-
-        .close-btn:hover { color: #fff; }
-
-        .modal h2 {
-            margin-bottom: 20px;
-            color: #55ff55;
-        }
-
-        .form-group {
-            margin-bottom: 15px;
-            text-align: left;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            color: #ccc;
-            font-size: 0.9rem;
-        }
-
-        .form-group input {
-            width: 100%;
-            padding: 12px;
-            border-radius: 8px;
-            border: 1px solid #333;
-            background: #0f1015;
-            color: #fff;
-            outline: none;
-        }
-
-        .form-group input:focus {
-            border-color: #55ff55;
-        }
-
-        .btn-submit {
-            width: 100%;
-            padding: 12px;
-            background: #55ff55;
-            color: #000;
-            border: none;
-            border-radius: 8px;
-            font-weight: bold;
-            font-size: 1rem;
-            cursor: pointer;
-            margin-top: 10px;
-            transition: 0.3s;
-        }
-
-        .btn-submit:hover {
-            background: #44cc44;
-        }
-
-        .divider {
-            margin: 20px 0;
-            color: #666;
-            position: relative;
-        }
-
-        .btn-google {
-            width: 100%;
-            padding: 12px;
-            background: #fff;
-            color: #333;
-            border: none;
-            border-radius: 8px;
-            font-weight: bold;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            transition: 0.3s;
-        }
-
-        .btn-google:hover {
-            background: #eee;
-        }
-
-        footer {
-            padding: 25px;
-            background: #0a0b0e;
-            color: #666;
-            font-size: 0.9rem;
-            border-top: 1px solid #1a1b24;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background: #0f1015; color: #fff; text-align: center; line-height: 1.6; }
+        .navbar { position: fixed; inset: 0 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 15px 50px; background: rgba(15,16,21,.85); backdrop-filter: blur(12px); z-index: 1000; border-bottom: 1px solid rgba(255,255,255,.1); }
+        .nav-logo, .nav-item { color: #fff; text-decoration: none; font-weight: 600; display: flex; align-items: center; gap: 8px; }
+        .nav-logo { font-size: 1.5rem; font-weight: bold; color: #55ff55; gap: 10px; }
+        .nav-item { padding: 8px 16px; border-radius: 20px; font-size: .95rem; transition: .3s; }
+        .nav-item:hover { color: #55ff55; background: rgba(255,255,255,.05); }
+        .hero { min-height: 90vh; background: linear-gradient(rgba(0,0,0,.55),rgba(15,16,21,1)), url('image_c9c48a.jpg') center/cover no-repeat; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 120px 20px 40px; }
+        .welcome-tag { color: #55ff55; font-weight: bold; letter-spacing: 2px; text-transform: uppercase; font-size: 1.1rem; margin-bottom: 10px; text-shadow: 0 0 10px #000; }
+        .hero h1 { font-size: 3.8rem; margin-bottom: 15px; text-shadow: 0 0 20px #000; }
+        .hero h1 span, section h2::after, .card h3 { color: #55ff55; }
+        .hero-desc { font-size: 1.25rem; color: #eee; max-width: 750px; margin-bottom: 35px; text-shadow: 0 2px 4px #000; }
+        .ip-box { background: rgba(0,0,0,.65); padding: 15px 30px; border-radius: 50px; backdrop-filter: blur(10px); border: 2px solid rgba(85,255,85,.6); cursor: pointer; transition: .3s; display: inline-flex; align-items: center; gap: 15px; }
+        .ip-box:hover { background: rgba(85,255,85,.25); border-color: #55ff55; transform: scale(1.05); box-shadow: 0 0 25px rgba(85,255,85,.5); }
+        .ip-text { font-size: 1.3rem; font-weight: bold; letter-spacing: 1px; }
+        .btn-copy { background: #55ff55; color: #000; padding: 8px 18px; border-radius: 20px; font-weight: bold; font-size: .9rem; }
+        section { padding: 70px 20px; max-width: 1000px; margin: 0 auto; }
+        section h2 { font-size: 2.3rem; margin-bottom: 15px; display: inline-block; }
+        section h2::after { content: ''; display: block; width: 60%; height: 4px; margin: 10px auto 0; border-radius: 2px; background: #55ff55; }
+        .section-subtitle { color: #aaa; margin-bottom: 45px; font-size: 1.1rem; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(280px,1fr)); gap: 25px; }
+        .card, .faq-item { background: #181920; border: 1px solid #2a2b36; }
+        .card { padding: 30px; border-radius: 15px; text-align: left; transition: .3s; }
+        .card:hover { transform: translateY(-8px); border-color: #55ff55; box-shadow: 0 10px 20px rgba(0,0,0,.5); }
+        .card .icon { font-size: 2.5rem; margin-bottom: 15px; display: block; }
+        .card h3 { margin-bottom: 10px; font-size: 1.3rem; }
+        .card p { color: #aaa; font-size: .95rem; }
+        .card a { color: #55ff55; }
+        .faq-container { text-align: left; display: flex; flex-direction: column; gap: 15px; }
+        .faq-item { border-radius: 10px; overflow: hidden; }
+        .faq-question { width: 100%; background: none; border: 0; padding: 20px; color: #fff; font-size: 1.1rem; font-weight: bold; text-align: left; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: .3s; }
+        .faq-question:hover, .faq-item.active .faq-question { color: #55ff55; }
+        .faq-question i { transition: transform .3s; }
+        .faq-item.active .faq-question i { transform: rotate(180deg); }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height .3s ease, padding .3s ease; background: #13141a; color: #ccc; padding: 0 20px; }
+        .faq-item.active .faq-answer { max-height: 200px; padding: 15px 20px 20px; }
+        footer { padding: 25px; background: #0a0b0e; color: #666; font-size: .9rem; border-top: 1px solid #1a1b24; }
+        @media (max-width: 600px) { .navbar { padding: 15px 20px; } .hero h1 { font-size: 3rem; } .ip-box { padding: 12px 18px; gap: 10px; } .ip-text { font-size: 1rem; } .btn-copy { padding: 7px 10px; font-size: .75rem; } }
     </style>
 </head>
 <body>
-
     <nav class="navbar">
-        <a href="#" class="nav-logo">
-            <i class="fa-solid fa-cube"></i> H SMP
-        </a>
-            <a href="#" class="nav-item">
-                <i class="fa-solid fa-house"></i> Trang Chủ
-            </a>
+        <a href="#" class="nav-logo"><i class="fa-solid fa-cube" aria-hidden="true"></i> H SMP</a>
+        <a href="#" class="nav-item"><i class="fa-solid fa-house" aria-hidden="true"></i> Trang Chủ</a>
     </nav>
 
-    <div class="hero">
-        <span class="welcome-tag">Chào mừng bạn đến với</span>
-        <h1>H <span>SMP</span></h1>
-        <p class="hero-desc">
-            Bạn chưa có server SMP nào để chơi? Hãy vào <b>H SMP</b> ngay hôm nay để trải nghiệm thế giới sinh tồn cày cuốc cực cuốn, cộng đồng đông vui và hệ thống tính năng độc đáo!
-        </p>
-        
-        <div class="ip-box" onclick="copyIP()">
-            <span class="ip-text" id="serverIP">hsmp.abrdns.com</span>
-            <span class="btn-copy">SAO CHÉP IP</span>
-        </div>
-    </div>
-
-    <!-- TÍNH NĂNG NỔI BẬT -->
-    <section>
-        <h2>TÍNH NĂNG NỔI BẬT</h2>
-        <p class="section-subtitle">Những lý do khiến bạn không thể bỏ qua H SMP</p>
-        
-        <div class="grid">
-            <div class="card">
-                <span class="icon">🏰</span>
-                <h3>Lối Chơi Survival Chuẩn</h3>
-                <p>Sinh tồn chuẩn Minecraft nguyên bản kết hợp cày cuốc nâng cấp, mang lại trải nghiệm cực vui.</p>
-            </div>
-            <div class="card">
-                <span class="icon">🏰</span>
-                <h3>Crossplay</h3>
-                <p>Sinh tồn Minecraft cùng bạn bè trên Mobile! Minecraft PE và Java (Java không cần ghi port bedrobck là 19132)</p>
-            </div>
-            <div class="card">
-                <span class="icon">🛡️</span>
-                <h3>Anti-cheat</h3>
-                <p>Chống Movement lạ, bay x-ray và các hành vi gian lận khác.(Plugin: AntiXray-3.0 và grimac bukkit)</p>
-            </div>
-            <div class="card">
-                <span class="icon">💎</span>
-                <h3>Chợ Trời & Kinh Tế</h3>
-                <p>Giao dịch sầm uất với Player Shop, tự do buôn bán vật phẩm để làm giàu.(Có thể tăng và giảm do lạm phát)</p>
-            </div>
-            <div class="card">
-                <span class="icon">⚡</span>
-                <h3>Mượt Mà & Không Lag</h3>
-                <p>Server tốc độ cao (Intel i5 13thGen), cấu hình mạnh mẽ, TPs 20.0 mượt.</p>
-            </div>
-            <div class="card">
-                <span class="icon">📜</span>
-                <h3>Nhiệm Vụ & Sự Kiện</h3>
-                <p>Sự Kiện định kì, có đồ ngon làm Nhiệm vụ! (sắp tới). Có H OBlock!</p>
-            </div>
-            <div class="card">
-                <span class="icon">👑</span>
-                <h3>Admin Thân Thiện</h3>
-                <p>Đội ngũ Ban Quản Trị sẵn sàng hỗ trợ và xử lý hacker nhanh chóng. Discord: <a href="https://discord.gg/mRdgKvV5r" target="_blank">Tham gia ngay</a></p>
-            </div>
-            <div class="card">
-                <span class="icon">⚡</span>
-                <h3>Anti-DDoS</h3>
-                <p>Anti-DDoS spam connect từ bên ngoài (bởi FPT Cảm ơn FPT đã tích hợp sẵn) và chống Ping (vì vậy bạn ko thể thấy được server có online không)</p>
-            </div>
-            <div class="card">
-                <span class="icon">⚡</span>
-                <h3>Server KHÔNG hoạt động 24/7</h3>
-                <p>Đội ngũ Ban Quản Trị xin thông báo rằng SERVER KHÔNG hoạt động 24/7 và tắt lúc ~22:30</p>
+    <main>
+        <div class="hero">
+            <span class="welcome-tag">Chào mừng bạn đến với</span>
+            <h1>H <span>SMP</span></h1>
+            <p class="hero-desc">Bạn chưa có server SMP nào để chơi? Hãy vào <b>H SMP</b> ngay hôm nay để trải nghiệm thế giới sinh tồn cày cuốc cực cuốn, cộng đồng đông vui và hệ thống hấp dẫn.</p>
+            <div class="ip-box" role="button" tabindex="0" aria-label="Sao chép địa chỉ server" onclick="copyIP()" onkeydown="if (event.key === 'Enter' || event.key === ' ') copyIP()">
+                <span class="ip-text" id="serverIP">hsmp.abrdns.com</span>
+                <span class="btn-copy">SAO CHÉP IP</span>
             </div>
         </div>
-    </section>
 
-    <section>
-        <h2>CÂU HỎI THƯỜNG GẶP</h2>
-        <p class="section-subtitle">Giải đáp thắc mắc phổ biến</p>
+        <section>
+            <h2>TÍNH NĂNG NỔI BẬT</h2>
+            <p class="section-subtitle">Những lý do khiến bạn không thể bỏ qua H SMP</p>
+            <div class="grid">
+                <div class="card"><span class="icon">🏰</span><h3>Lối Chơi Survival Chuẩn</h3><p>Sinh tồn chuẩn Minecraft nguyên bản kết hợp cày cuốc nâng cấp, mang lại trải nghiệm cực vui.</p></div>
+                <div class="card"><span class="icon">🏰</span><h3>Crossplay</h3><p>Sinh tồn Minecraft cùng bạn bè trên Mobile! Minecraft PE và Java. Bedrock sử dụng port 19132.</p></div>
+                <div class="card"><span class="icon">🛡️</span><h3>Anti-cheat</h3><p>Chống movement lạ, bay, X-ray và các hành vi gian lận khác. Plugin: AntiXray-3.0 và GrimAC Bukkit.</p></div>
+                <div class="card"><span class="icon">💎</span><h3>Chợ Trời &amp; Kinh Tế</h3><p>Giao dịch sầm uất với Player Shop, tự do buôn bán vật phẩm để làm giàu. Giá có thể thay đổi do lạm phát.</p></div>
+                <div class="card"><span class="icon">⚡</span><h3>Mượt Mà &amp; Không Lag</h3><p>Server tốc độ cao, cấu hình mạnh mẽ, TPS 20.0 mượt.</p></div>
+                <div class="card"><span class="icon">📜</span><h3>Nhiệm Vụ &amp; Sự Kiện</h3><p>Sự kiện định kỳ, có đồ ngon làm nhiệm vụ (sắp tới). Có H OBlock!</p></div>
+                <div class="card"><span class="icon">👑</span><h3>Admin Thân Thiện</h3><p>Đội ngũ Ban Quản Trị sẵn sàng hỗ trợ và xử lý hacker nhanh chóng. Discord: <a href="https://discord.gg/mRdgKvV5r" target="_blank" rel="noopener noreferrer">Tham gia ngay</a></p></div>
+                <div class="card"><span class="icon">⚡</span><h3>Anti-DDoS</h3><p>Anti-DDoS chống spam kết nối từ bên ngoài. Vì vậy bạn không thể dùng ping để kiểm tra server có online hay không.</p></div>
+                <div class="card"><span class="icon">⚡</span><h3>Server không hoạt động 24/7</h3><p>Server không hoạt động 24/7 và thường tắt lúc khoảng 22:30.</p></div>
+            </div>
+        </section>
 
-        <div class="faq-container">
-            <div class="faq-item">
-                <button class="faq-question">
-                    1. Server H SMP hỗ trợ phiên bản Minecraft nào?
-                    <i class="fa-solid fa-chevron-down"></i>
-                </button>
-                <div class="faq-answer">
-                    <p>Server hỗ trợ vào bằng các phiên bản từ <b>1.16.5 đến 1.26.1</b>.</p>
+        <section>
+            <h2>CÂU HỎI THƯỜNG GẶP</h2>
+            <p class="section-subtitle">Giải đáp thắc mắc phổ biến</p>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <button class="faq-question" type="button">1. Server H SMP hỗ trợ phiên bản Minecraft nào?<i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>
+                    <div class="faq-answer"><p>Server hỗ trợ vào bằng các phiên bản từ <b>1.16.5 đến 1.26.1</b>.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" type="button">2. Điện thoại (MCPE) có vào chơi được không?<i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>
+                    <div class="faq-answer"><p>Có! Server hỗ trợ cả người chơi Java (PC) và Bedrock (Android/iOS).</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" type="button">3. Ping ổn không?<i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>
+                    <div class="faq-answer"><p>Server hỗ trợ người chơi tại Việt Nam. Ping có thể rất thấp, gần như 0ms tùy kết nối.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" type="button">4. Admin có trực 24/24 không?<i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>
+                    <div class="faq-answer"><p>Admin không trực 24/24; thời gian hoạt động thường là 16:15 - 21:00.</p></div>
                 </div>
             </div>
-            <div class="faq-item">
-                <button class="faq-question">
-                    2. Điện thoại (MCPE) có vào chơi được không?
-                    <i class="fa-solid fa-chevron-down"></i>
-                </button>
-                <div class="faq-answer">
-                    <p>Có! Server hỗ trợ cả người chơi Java (PC) và Bedrock (Android/iOS). (Vui lòng đọc phần trên)</p>
-                </div>
-            </div>
-        <div class="faq-container">
-            <div class="faq-item">
-                <button class="faq-question">
-                    3. Ping ổn Không?
-                    <i class="fa-solid fa-chevron-down"></i>
-                </button>
-                <div class="faq-answer">
-                    <p>Server hỗ trợ Server Vietnam Only và có quốc tế nhưng đang phát triền. Ping có thể cực thấp gần như = 0ms</b>.</p>
-                </div>
-            </div>
-        </div>
-        <div class="faq-container">
-            <div class="faq-item">
-                <button class="faq-question">
-                    4. Admin có 24/24 ko?
-                    <i class="fa-solid fa-chevron-down"></i>
-                </button>
-                <div class="faq-answer">
-                    <p>Admin không hề 24/24 họ có thời gian hoạt động là 16:15 - 21:00</b>.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
-
-    <footer>
-        &copy; 2026 H SMP Server. All rights reserved.
-        &copy; Hung1502thanh!
-    </footer>
+    <footer>&copy; 2026 H SMP Server. All rights reserved. &copy; Hung1502thanh!</footer>
 
     <script>
-        // Copy IP
-        function copyIP() {
-            const ip = document.getElementById("serverIP").innerText;
-            navigator.clipboard.writeText(ip);
-            alert("Đã copy IP server: " + ip + "\n");
+        async function copyIP() {
+            const ip = document.getElementById('serverIP').textContent.trim();
+            try {
+                if (!navigator.clipboard) throw new Error('Clipboard API unavailable');
+                await navigator.clipboard.writeText(ip);
+                alert('Đã copy IP server: ' + ip);
+            } catch (error) {
+                const input = document.createElement('textarea');
+                input.value = ip;
+                input.setAttribute('readonly', '');
+                input.style.position = 'fixed';
+                input.style.opacity = '0';
+                document.body.appendChild(input);
+                input.select();
+                document.execCommand('copy');
+                input.remove();
+                alert('Đã copy IP server: ' + ip);
+            }
         }
 
-        // Accordion FAQ
-        document.querySelectorAll('.faq-question').forEach(q => {
-            q.addEventListener('click', () => {
-                const item = q.parentElement;
-                item.classList.toggle('active');
+        document.querySelectorAll('.faq-question').forEach((question) => {
+            question.addEventListener('click', () => {
+                question.parentElement.classList.toggle('active');
             });
         });
     </script>
